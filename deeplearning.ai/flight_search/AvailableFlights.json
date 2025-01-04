@@ -1,0 +1,58 @@
+{
+  "flights": [
+    {
+      "airline": "Frontier",
+      "price": "$63",
+      "departure_date": "01 Feb 2025",
+      "return_date": "10 Feb 2025"
+    },
+    {
+      "airline": "Spirit Airlines",
+      "price": "$120",
+      "departure_date": "01 Feb 2025",
+      "return_date": "10 Feb 2025"
+    },
+    {
+      "airline": "Expedia",
+      "price": "$140",
+      "departure_date": "01 Feb 2025",
+      "return_date": "10 Feb 2025"
+    },
+    {
+      "airline": "American Airlines",
+      "price": "$213",
+      "departure_date": "01 Feb 2025",
+      "return_date": "10 Feb 2025"
+    },
+    {
+      "airline": "JetBlue Airways",
+      "price": "$192",
+      "departure_date": "01 Feb 2025",
+      "return_date": "10 Feb 2025"
+    },
+    {
+      "airline": "Expedia",
+      "price": "$139",
+      "departure_date": "01 Feb 2025",
+      "return_date": "10 Feb 2025"
+    },
+    {
+      "airline": "Orbitz",
+      "price": "$139",
+      "departure_date": "01 Feb 2025",
+      "return_date": "10 Feb 2025"
+    },
+    {
+      "airline": "Momondo",
+      "price": "Varies",
+      "departure_date": "01 Feb 2025",
+      "return_date": "10 Feb 2025"
+    },
+    {
+      "airline": "Skyscanner",
+      "price": "Varies",
+      "departure_date": "01 Feb 2025",
+      "return_date": "10 Feb 2025"
+    }
+  ]
+}

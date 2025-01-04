@@ -82,7 +82,9 @@ class VenueDetails(BaseModel):
 
 venue_task = Task(
     description="Find a venue in {event_city} "
-                "that meets criteria for {event_topic}.",
+                "that meets criteria for {event_topic}. "
+                "The venue should have a capacity of at least {expected_participants} "
+                "and be available on {tentative_date}.",
     expected_output="All the details of a specifically chosen"
                     "venue you found to accommodate the event.",
     human_input=True,
@@ -110,7 +112,7 @@ marketing_task = Task(
                 "{expected_participants} potential attendees.",
     expected_output="Report on marketing activities "
                     "and attendee engagement formatted as markdown.",
-    async_execution=True,
+    # async_execution=True,
     output_file="marketing_report.md",  # Outputs the report as a text file
     agent=marketing_communications_agent
 )
