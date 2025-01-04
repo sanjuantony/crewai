@@ -1,3 +1,9 @@
+#ignore this in github
+
+# environment variables
 .env
-__pycache__
+
+#Cache folders
+__pycache__/
+
 .DS_Store
