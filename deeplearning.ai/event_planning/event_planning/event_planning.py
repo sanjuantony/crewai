@@ -8,7 +8,7 @@ from crewai_tools import SerperDevTool, \
                          ScrapeWebsiteTool, \
                          WebsiteSearchTool
 from dotenv import load_dotenv
-# from IPython.display import Markdown
+# from IPython.display import Markdow
 
 
 warnings.filterwarnings("ignore")
