@@ -5,5 +5,8 @@
 
 #Cache folders
 __pycache__/
+.venv
+.md
+*.lock
 
 .DS_Store

@@ -17,7 +17,7 @@ openai_api_key = os.getenv("OPENAI_API_KEY")
 os.environ["OPENAI_MODEL_NAME"] = "gpt-3.5-turbo"
 os.environ["SERPER_API_KEY"] = os.getenv("SERPER_API_KEY")
 
-upport_agent = Agent(
+support_agent = Agent(
     role="Senior Support Representative",
 	goal="Be the most friendly and helpful "
         "support representative in your team",
