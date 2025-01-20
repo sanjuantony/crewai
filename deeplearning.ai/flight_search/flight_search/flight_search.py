@@ -34,38 +34,39 @@ search_flights_agent = Agent(
     verbose=True
 )
 
-
 from pydantic import BaseModel
-class AvailableFlights(BaseModel):
-    flights: list
-
 class FlightDetails(BaseModel):
     airline: str
     price: float
-    departure_time: str
-    arrival_time: str
-    duration: str
-    layovers: int
-    layover_duration: str
+    travel_date: str
+    airline_preference: str
+
+class AvailableFlights(BaseModel):
+    flights: list[FlightDetails]
+
+
 
 # Task 1: Search Flights
 search_flights_task = Task(
-    description="Find flights originating from {from_airport} "
-                "and flying to {to_airport}. "
-                "A round trip flights should be available on {from_date} until {to_date}. ",
-    expected_output="The first 5 flights sorted by price. Show me flights which has price data on there. ",
+    description="Find ONE WAY flights originating from {from_airport} to {to_airport}.  "
+                "The departing travel date should be between {from_date} and {to_date}. "
+                "DO NOT search for flights outside of this date range. "
+                "If there is a preference of airline as stated in {airline_preference} "
+                "search only that airline, else any airline is fine. "
+                "Find flights with the LOWEST price. ",
+    expected_output="A list of 10 available flights sorted by price. ",
     human_input=True,
     output_json=AvailableFlights,
-    output_file="AvailableFlights.json",  
-      # Outputs the venue details as a JSON file
+    output_file="AvailableFlights.json",
     agent=search_flights_agent
 )
 
 trip_details = {
     'from_airport': "JFK",
-    'to_airport': "PHX",
-    'from_date': "01 Feb 2025",
-    'to_date': "10 Feb 2025"
+    'to_airport': "BOM",
+    'from_date': "15 June 2025",
+    'to_date': "15 July 2025",
+    'airline_preference': "Virgin Atlantic"
 }
 
 trip_crew = Crew(

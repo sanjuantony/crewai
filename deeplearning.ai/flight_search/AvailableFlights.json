@@ -1,58 +1,64 @@
 {
   "flights": [
     {
-      "airline": "Frontier",
-      "price": "$63",
-      "departure_date": "01 Feb 2025",
-      "return_date": "10 Feb 2025"
-    },
-    {
-      "airline": "Spirit Airlines",
-      "price": "$120",
-      "departure_date": "01 Feb 2025",
-      "return_date": "10 Feb 2025"
-    },
-    {
-      "airline": "Expedia",
-      "price": "$140",
-      "departure_date": "01 Feb 2025",
-      "return_date": "10 Feb 2025"
+      "airline": "American Airlines",
+      "price": 359.0,
+      "travel_date": "15 June 2025",
+      "airline_preference": "Any airline"
     },
     {
       "airline": "American Airlines",
-      "price": "$213",
-      "departure_date": "01 Feb 2025",
-      "return_date": "10 Feb 2025"
+      "price": 360.0,
+      "travel_date": "15 July 2025",
+      "airline_preference": "Any airline"
     },
     {
-      "airline": "JetBlue Airways",
-      "price": "$192",
-      "departure_date": "01 Feb 2025",
-      "return_date": "10 Feb 2025"
+      "airline": "Etihad Airways",
+      "price": 363.0,
+      "travel_date": "15 January 2025",
+      "airline_preference": "Any airline"
     },
     {
-      "airline": "Expedia",
-      "price": "$139",
-      "departure_date": "01 Feb 2025",
-      "return_date": "10 Feb 2025"
+      "airline": "Etihad Airways",
+      "price": 364.0,
+      "travel_date": "15 February 2025",
+      "airline_preference": "Any airline"
     },
     {
-      "airline": "Orbitz",
-      "price": "$139",
-      "departure_date": "01 Feb 2025",
-      "return_date": "10 Feb 2025"
+      "airline": "Air India",
+      "price": 377.0,
+      "travel_date": "26 January 2025",
+      "airline_preference": "Any airline"
     },
     {
-      "airline": "Momondo",
-      "price": "Varies",
-      "departure_date": "01 Feb 2025",
-      "return_date": "10 Feb 2025"
+      "airline": "Air India",
+      "price": 388.0,
+      "travel_date": "12 February 2025",
+      "airline_preference": "Any airline"
     },
     {
-      "airline": "Skyscanner",
-      "price": "Varies",
-      "departure_date": "01 Feb 2025",
-      "return_date": "10 Feb 2025"
+      "airline": "Kuwait Airways",
+      "price": 392.0,
+      "travel_date": "6 May 2025",
+      "airline_preference": "Any airline"
+    },
+    {
+      "airline": "Kuwait Airways",
+      "price": 472.0,
+      "travel_date": "6 May 2025",
+      "airline_preference": "Any airline"
+    },
+    {
+      "airline": "Emirates",
+      "price": 530.0,
+      "travel_date": "14 January 2025",
+      "airline_preference": "Any airline"
+    },
+    {
+      "airline": "Emirates",
+      "price": 531.0,
+      "travel_date": "14 January 2025",
+      "airline_preference": "Any airline"
     }
   ]
 }
