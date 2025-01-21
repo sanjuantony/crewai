@@ -1,0 +1,23 @@
+site_reader_task:
+  description: >
+    Thoroughly read the article at {url} and extract the main points and summary.
+  expected_output: >
+    A header that provides the articles title, the next line should have the {url} analyzed 
+    followed by a detailed description of the article.
+    Each section within the article should be titled and each of these sections 
+    should be elaborately summarozed.
+    The output should be formatted as markdown without '```'
+    An example output is:
+
+    Article Title
+    URL: https://example.com/article
+
+    ## Summary:
+    Summary of the article...
+
+    ## Section 1:
+    Detailed summary of section 1...
+
+    ## Section 2:
+    Detailed summary of section 2...
+  agent: site_reader
