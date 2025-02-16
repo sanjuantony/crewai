@@ -6,11 +6,10 @@ authors = ["sanjuantony <sanjuantony@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.10,<=3.13"
-pendulum = "^3.0.0"
-crewai = "^0.86.0"
-crewai-tools = "^0.17.0"
-langchain-community = "^0.3.13"
+python = ">=3.11,<3.13"
+crewai = "^0.102.0"
+crewai-tools = "^0.36.0"
+langchain-community = "^0.3.17"
 utils = "^1.0.2"
 
 

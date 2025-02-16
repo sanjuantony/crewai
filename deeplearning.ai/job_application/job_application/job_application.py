@@ -14,7 +14,8 @@ from utils import pretty_print_result
 warnings.filterwarnings("ignore")
 load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")
-os.environ["OPENAI_MODEL_NAME"] = "gpt-3.5-turbo"
+# os.environ["OPENAI_MODEL_NAME"] = "gpt-3.5-turbo"
+os.environ["OPENAI_MODEL_NAME"] = os.getenv("OPENAI_MODEL_NAME")
 os.environ["SERPER_API_KEY"] = os.getenv("SERPER_API_KEY")
 
 search_tool = SerperDevTool()
@@ -194,4 +195,4 @@ job_application_inputs = {
 ### this execution will take a few minutes to run
 result = job_application_crew.kickoff(inputs=job_application_inputs)
 
-pretty_print_result(result)
+pretty_print_result(result.raw)
