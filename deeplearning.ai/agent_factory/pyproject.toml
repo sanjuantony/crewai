@@ -1,0 +1,21 @@
+[project]
+name = "agent-factory"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "sanjuantony",email = "sanjuantony@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "crewai (>=0.102.0,<0.103.0)",
+    "crewai-tools (>=0.36.0,<0.37.0)"
+]
+
+[tool.poetry]
+packages = [{include = "agent_factory", from = "src"}]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
