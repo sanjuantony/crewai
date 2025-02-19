@@ -18,23 +18,45 @@ os.environ["OPENAI_MODEL_NAME"] = os.getenv("OPENAI_MODEL_NAME")
 search_tool = SerperDevTool()
 scrape_tool = ScrapeWebsiteTool()
 
+from pydantic import BaseModel
+# Define a Pydantic model for venue details 
+# (demonstrating Output as Pydantic)
+# class AgentDetails(BaseModel):
+#     agent_name: str
+#     agent_goal: str
+#     agent_backstory: str
+
 # Agents needed - Planner, Writer, Editor
 # Tasks: Plan, Write, Edit
 # Wire up the crew
 
 ##### Agents ####
-planner = Agent(
+agent_planner = Agent(
     role="Agents Planner",
-    goal="Identify CrewaAI agents that can help me write code to satisfy the requested task. ",
+    goal="Identify CrewaAI agents needed to complete the requested task. ",
     backstory="You are an expert in the field of Agentic AI. "
                 "Your knowledge about CrewAI is excellent and you have  "
                 "numerous years of experience working with the CrewAI framework. "
-                "Your expertise helps you to plan for the number of agents "
+                "Your expertise helps you decide the appropriate number of agents "
                 "needed to achieve the task requested. "
                 "You can use any appropriate tools to help you plan better. ",
     allow_delegation=False,
     verbose=True,
-    tools=[search_tool, scrape_tool]
+    tools=[search_tool]
+)
+
+task_planner = Agent(
+    role="Tasks Planner",
+    goal="Identify CrewaAI tasks needed for each of the agents identified by the Agent Planner agent. ",
+    backstory="You are an expert in the field of Agentic AI. "
+                "Your knowledge about CrewAI is excellent and you have  "
+                "numerous years of experience working with the CrewAI framework. "
+                "Your expertise helps you decide the appropriate task each agent has to perform "
+                "to achieve the task requested. "
+                "You can use any appropriate tools to help you plan better. ",
+    allow_delegation=False,
+    verbose=True,
+    # tools=[search_tool, scrape_tool]
 )
 
 # writer = Agent(
@@ -76,16 +98,33 @@ planner = Agent(
 # )
 
 ##### Tasks ####
-plan = Task(
+agent_plan = Task(
     description=(
-        "1. Your task is to identify the right number of agents to achieve the task request in {topic}. "
-        "2. Think and reason on how what kind of CrewAI agents would be needed to achieve the requested task."
-        "3. List the agents, their names, their role and backstory that I can use in my CrewAI code."
+        "Your task is to understand the request made by the user, and identify the right number of "
+        "CrewAI agents needed. The topic is: {topic}"
+        "Think thoroughly on the kind of CrewAI agents needed to achieve the requested topic. "
+        "You also need to find any CrewAI or Langchain tools that the agent needs to perform their task. There "
+        "could be multiple tools the agent can use and if so, create them as a list as [tool1, tool2, ...]"
+        "List the agents, their names, their role, backstory and tools recommended, that I can use in my CrewAI code."
     ),
     expected_output="A listing of all agents, their names, their roles and backstory "
                     "in a table format with columns headers as below "
-                    "CrewAI Agent # | CrewAI Agent Name | CrewAI Agent Role | CrewAI Agent Backstory",
-    agent=planner
+                    "CrewAI Agent # | CrewAI Agent Name | CrewAI Agent Role | CrewAI Agent Backstory | List of Tools",
+    agent=agent_planner
+)
+
+task_plan = Task(
+    description=(
+        "For each of the agents identified by the task agent, you need to create the appropriate "
+        "CrewAI task that can used in the program."
+        "Think thoroughly on what task each agent need to do to achieve the results as requested by {topic}"
+        "List the Task Name, Task Description, Expected Output and agent name who will perform this task. "
+        "I will be using this information in my CrewAI code."
+    ),
+    expected_output="A listing of all task description, expectde output and agent handling the task  "
+                    "in a table format with columns headers as below "
+                    "Task Name | Task Description | Expected Output | Agent Perfomring the Task",
+    agent=task_planner
 )
 
 # write = Task(
@@ -119,14 +158,19 @@ plan = Task(
 
 ### Assemble the Crew ###
 crew = Crew(
-    agents=[planner],
-    tasks=[plan],
+    agents=[agent_planner, task_planner],
+    tasks=[agent_plan, task_plan],
     verbose=True
 )
 
 
 ### Kickoff the Crew ###
-result = crew.kickoff(inputs={"topic": "Search for jobs that satisfy a certain criteria. "})
+crew_input={
+                "topic": "I need to scrape a website and list down topics and URLs from that website. "
+                              "This information need to be passed to another agent which can access each of the URLs "
+                              "from the list above, scrape the content from this subsite and then summarize the content."
+            }
+result = crew.kickoff(inputs=crew_input)
 
 print(result)
 
