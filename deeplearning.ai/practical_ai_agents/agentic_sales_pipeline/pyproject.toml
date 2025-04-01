@@ -1,0 +1,22 @@
+[project]
+name = "agentic-sales-pipeline"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "sanjuantony",email = "sanjuantony@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "crewai (>=0.108.0,<0.109.0)",
+    "crewai-tools (>=0.38.1,<0.39.0)",
+    "jupyter (>=1.1.1,<2.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "agentic_sales_pipeline", from = "src"}]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
